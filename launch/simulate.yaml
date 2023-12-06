@@ -1,0 +1,29 @@
+---
+# Start nodes for joy, map server, racecar model, and simulator
+
+launch:
+
+# Listen to messages from joysticks
+- name: joy_node
+  package: joy
+  executable: joy_node
+  output: screen
+
+# Launch map from the maps folder
+- name: map_server
+  package: map_server
+  executable: map_server
+  arguments:
+    - $(find racecar_simulator)/maps/building_31.yaml
+
+# Launch the racecar model (assuming the file exists)
+- include:
+    file: $(find racecar_simulator)/launch/racecar_model.launch
+
+# Begin the simulator with the parameters from params.yaml
+- name: racecar_simulator
+  package: racecar_simulator
+  executable: simulate
+  output: screen
+  parameters:
+    - $(find racecar_simulator)/params.yaml
