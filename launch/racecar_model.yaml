@@ -1,0 +1,14 @@
+launch:
+  # Open the model file
+  arguments:
+    - name: racecar_xacro
+      value: $(find racecar_simulator)/racecar.xacro
+      default: True
+    - name: robot_description
+      value: xacro --inorder "$(arg racecar_xacro)"
+  # Add the ROS nodes
+  nodes:
+    - name: robot_state_publisher
+      package: robot_state_publisher
+      executable: robot_state_publisher
+      output: both

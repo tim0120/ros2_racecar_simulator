@@ -18,7 +18,7 @@ launch:
 
 # Launch the racecar model (assuming the file exists)
 - include:
-    file: $(find racecar_simulator)/launch/racecar_model.launch
+    file: $(find racecar_simulator)/launch/racecar_model.yaml
 
 # Begin the simulator with the parameters from params.yaml
 - name: racecar_simulator
